@@ -105,9 +105,11 @@
 		color: white;
 	}
 
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
+	@media (max-width: 640px) {
+
+		img {
+			width: 175px;
+			height: 175px;
 		}
 	}
 </style>

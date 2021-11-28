@@ -11,8 +11,10 @@
 		spotify_url: string
     episode_len: number
 	}
-  
 
+
+  
+  let expand:boolean = false
   export let episodeData:Episode 
 
   function convertMils(mils:number):string {
@@ -41,8 +43,11 @@
       <a href={episodeData.spotify_url} class='icon' ><Icon icon={faSpotify} /></a>
     </div>
   </div>
+  {#if !expand}
+    <article>{episodeData.description.substr(0, 49)}... <span on:click={() => expand = true}>more</span></article>
+  {:else}
   <article>{episodeData.description}</article>
-  
+  {/if}
 </div>
 
 <style>
@@ -102,6 +107,28 @@
   article {
     font-weight: 200;
     padding: 10px;
+  }
+
+  span {
+    color: #4500ff;
+  }
+
+  span:hover {
+    cursor: pointer;
+  }
+
+  @media (max-width: 640px) {
+    .card {
+      width: 100%;
+    }
+
+    .head {
+      flex-direction: row;
+    }
+
+    .links {
+      align-self: flex-endx;
+    }
   }
 
 
